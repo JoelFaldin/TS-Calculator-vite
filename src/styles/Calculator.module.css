@@ -8,7 +8,7 @@ body {
 .opArea {
     background-color: darkcyan;
     height: 50vh;
-    width: 20vw;
+    max-width: 350px;
     margin: 10vh auto 0 auto;
     border: 2px solid #8b5fa5;
 }
@@ -23,8 +23,16 @@ body {
     display: inline;
     color: #d4ad14;
     font-family: 'Poppins', sans-serif;
-    font-size: 35px;
+    font-size: 30px;
     padding: 2px;
+    margin: 0;
+}
+
+.input2 {
+    color: #d4ad14;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
 }
 
 .h1Class {
