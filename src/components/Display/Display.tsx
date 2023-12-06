@@ -1,13 +1,12 @@
 interface display {
     input: string,
-    result: string
 }
 
-const Display: React.FC<display> = ({ input, result }) => {
+const Display: React.FC<display> = ({ input }) => {
     return (
         <section id='display' className='display'>
             <p className='input' id='inputText' >{input}</p>
-            <p className='input2'>= {result}</p>
+            <p className='input2'>=</p>
         </section>
     )
 }
