@@ -10,6 +10,7 @@ const operations2 = ['+','-', '*', '/']
 const Calculator = () => {
     const [input, setInput] = useState<string>('0')
     const [op, setOp] = useState<string>('')
+    const [lastResult, setLastResult] = useState<string>('')
     
     const updateInput = (event: string | number) => {
         // We use 'input' to check values, and 'prevInput' to update the state:
@@ -46,6 +47,7 @@ const Calculator = () => {
                         const number = operate(newValue[0], op, newValue[1])
                         if (number !== undefined) {
                             setInput(number.toString().concat('+'))
+                            setLastResult(number.toString())
                         }
                     } else {
                         setInput(prevInput => prevInput.concat('+'))
@@ -56,6 +58,7 @@ const Calculator = () => {
                         const number = operate(newValue[0], op, newValue[1])
                         if (number !== undefined) {
                             setInput(number.toString().concat('-'))
+                            setLastResult(number.toString())
                         }
                     } else {
                         setInput(prevInput => prevInput.concat('-'))
@@ -66,6 +69,7 @@ const Calculator = () => {
                         const number = operate(newValue[0], op, newValue[1])
                         if (number !== undefined) {
                             setInput(number.toString().concat('*'))
+                            setLastResult(number.toString())
                         }
                     } else {
                         setInput(prevInput => prevInput.concat('*'))
@@ -76,6 +80,7 @@ const Calculator = () => {
                         const number = operate(newValue[0], op, newValue[1])
                         if (number !== undefined) {
                             setInput(number.toString().concat('/'))
+                            setLastResult(number.toString())
                         }
                     } else {
                         setInput(prevInput => prevInput.concat('/'))
@@ -121,15 +126,28 @@ const Calculator = () => {
         (document.getElementById('inputText') as HTMLElement).innerText = '0';
     }
 
+    const handleEqual = () => {
+        const numbers = input.split(operations)
+        if (numbers.length === 2) {
+            const result = operate(numbers[0], op, numbers[1])
+            if (result !== undefined) {
+                setInput(result.toString())
+                setLastResult(result.toString())
+            }
+        } else {
+            ''
+        }
+    }
+
     return (
         <>
             <div className='outsider'>
                 <Titles />
 
                 <section id='operation-area' className='opArea'>
-                    <Display input={input} />
+                    <Display input={input} result={lastResult} />
 
-                    <Buttons handleDelete={handleDelete} updateInput={updateInput} />
+                    <Buttons handleDelete={handleDelete} updateInput={updateInput} handleEqual={handleEqual} />
                 </section>
             </div>
         </>

@@ -1,9 +1,10 @@
 interface button {
     handleDelete: () => void
     updateInput: (content: string | number) => void
+    handleEqual: () => void
 }
 
-const Buttons: React.FC<button> = ({ handleDelete, updateInput }) => {
+const Buttons: React.FC<button> = ({ handleDelete, updateInput, handleEqual }) => {
     return (
         <section className='container'>
             <button id='c' className='column' onClick={handleDelete}>CLEAR</button>
@@ -22,7 +23,7 @@ const Buttons: React.FC<button> = ({ handleDelete, updateInput }) => {
             <button id='1' className='column' onClick={() => updateInput(1)}>1</button>
             <button id='.' className='column' onClick={() => updateInput('.')}>.</button>
             <button id='0' className='column'  onClick={() => updateInput(0)}>0</button>
-            <button id='=' className='column' onClick={() => console.log('it should complete the operation now')}>=</button>
+            <button id='=' className='column' onClick={handleEqual}>=</button>
         </section>
     )
 }
