@@ -1,3 +1,5 @@
+import './Display.css'
+
 interface display {
     input: string,
     result: string

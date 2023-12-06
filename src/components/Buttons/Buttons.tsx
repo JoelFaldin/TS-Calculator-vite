@@ -1,3 +1,5 @@
+import './Buttons.css'
+
 interface button {
     handleDelete: () => void
     updateInput: (content: string | number) => void

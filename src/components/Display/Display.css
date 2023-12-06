@@ -1,0 +1,24 @@
+.display {
+    background-color: black;
+    color: #ecdfef;
+    height: 10vh;
+    min-width: 100%;
+    overflow: hidden;
+}
+
+.input {
+    color: #d4ad14;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    padding: 2px;
+    margin: 0;
+    text-align: right;
+}
+
+.input2 {
+    color: #d4ad14;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
+    text-align: right;
+}

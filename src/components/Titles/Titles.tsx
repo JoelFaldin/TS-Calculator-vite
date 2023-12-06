@@ -1,3 +1,5 @@
+import './Titles.css'
+
 const Titles = () => {
     return (
         <>
