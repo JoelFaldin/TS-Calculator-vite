@@ -7,10 +7,12 @@ interface display {
 
 const Display: React.FC<display> = ({ input, result }) => {
     return (
-        <section id='display' className='display'>
-            <p className='input' id='inputText' >{input}</p>
-            <p className='input2'>{result}</p>
-        </section>
+        <>
+            <div className='display'>
+                <p id='display' className='input'>{input}</p>
+                <p className='result'>{result}</p>
+            </div>
+        </>
     )
 }
 

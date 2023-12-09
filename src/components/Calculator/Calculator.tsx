@@ -5,7 +5,7 @@ import Display from "../Display/Display"
 import Buttons from "../Buttons/Buttons"
 import { evaluate } from "mathjs"
 
-// const operations = /[-+/*]/g
+const operations = /[-+/*]/g
 const operations2 = ['+', '-', '*', '/']
 
 const Calculator = () => {
@@ -13,7 +13,6 @@ const Calculator = () => {
     const [lastResult, setLastResult] = useState<string>('')
     
     const updateInput = (event: string | number) => {
-        // We use 'input' to check values, and 'prevInput' to update the state:
         const data = event
 
         switch (typeof data) {
@@ -30,52 +29,82 @@ const Calculator = () => {
                     break
                 }
                 // Handling the decimal:
-                if (data === '.' && input[input.length - 1] !== '.') {
-                    setInput(prev => prev.concat(data))
+                if (data === '.') {
+                    const lastNum = input.split(operations).pop()
+                    lastNum?.includes('.') ? '' : setInput(prev => prev.concat('.'))
                     break
-                } else if (data === '.' && input[input.length - 1] === '0') {
-                    
                 }
-                // Checking if last char is an operation:
+                // Checking if the last character is an operation:
+                // if (operations2.includes(input[input.length - 1])) {
+                //     if (input[input.length - 1] === '-' && data === '-' ) {
+                //         break
+                //     } else if (input[input.length - 1] === data) {
+                //         break
+                //     } else if (operations2.includes(input[input.length - 2])) {
+                //         break
+                //     } else if (input[input.length - 1] !== '-' && data === '-') {
+                //         setInput(prev => prev.concat(data))
+                //         break
+                //     } else {
+                //         setInput(prev => prev.slice(0, -1).concat(data === '-' ? '' : data))
+                //         break
+                //     }
+                // }
+                // Checking if the last character is an operation:
                 if (operations2.includes(input[input.length - 1])) {
-                    if (input[input.length - 1] === '-' && data === '-' ) {
+                    if (operations2.includes(input[input.length - 2]) && input[input.length - 1] === '-') {
+                        const placeholder = input.slice(0, -2)
+                        setInput(placeholder.concat(data))
                         break
-                    } else if (input[input.length - 1] === data) {
-                        break
-                    } else if (operations2.includes(input[input.length - 2])) {
-                        break
-                    } else if (input[input.length - 1] !== '-' && data === '-') {
+                    } else if (data === '-') {
                         setInput(prev => prev.concat(data))
                         break
                     } else {
-                        setInput(prev => prev.slice(0, -1).concat(data === '-' ? '' : data))
+                        const placeholder = input.split('')
+                        placeholder.pop()
+                        setInput(placeholder.join('').concat(data))
                         break
-                    }   
+                    }
+                }
+                // Checking if 'input' already has an '=':
+                if (input.includes('=')) {
+                    const index = input.indexOf('=')
+                    const result = input.slice(index + 1)
+                    setInput(result.concat(data))
+                    break
                 }
                 // Checking if 'data' is any operation:
                 if (data === '+') {
                     setInput(prev => prev.concat(data))
+                    break
                 } else if (data === '-') {
                     setInput(prev => prev.concat(data))
+                    break
                 } else if (data === '*') {
                     setInput(prev => prev.concat(data))
+                    break
                 } else if (data === '/') {
                     setInput(prev => prev.concat(data))
-                }
-                
+                    break
+                }                
                 break
         }
+        setLastResult(data.toString())
     }
 
     const handleDelete = () => {
         setInput('0');
         setLastResult('');
-        (document.getElementById('inputText') as HTMLElement).innerText = '0';
     }
 
     const handleEqual = () => {
-        const result = evaluate(input)
-        setLastResult(result)
+        if (operations.test(input[input.length - 1])) {
+            return '';
+        } else {
+            const result = evaluate(input)
+            setInput(result.toString())
+            setLastResult(result.toString())
+        }
     }
 
     return (
@@ -83,11 +112,11 @@ const Calculator = () => {
             <div className='outsider'>
                 <Titles />
 
-                <section id='operation-area' className='opArea'>
+                <div id='operation-area' className='opArea'>
                     <Display input={input} result={lastResult} />
 
                     <Buttons handleDelete={handleDelete} updateInput={updateInput} handleEqual={handleEqual} />
-                </section>
+                </div>
             </div>
         </>
     )
