@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Lato:wght@300&family=Open+Sans:wght@300;400&family=Poppins:wght@300&family=Raleway:wght@200;300;400;500&family=Titillium+Web:wght@300;400;600&display=swap');
 
 body {
-    background-color: #150b16;
+    background-color: #111718;
 }
 
 .opArea {
@@ -10,5 +10,5 @@ body {
     height: 45.5vh;
     max-width: 354px;
     margin: 10vh auto 0 auto;
-    border: 2px solid #8b5fa5;
+    border: 2px solid #8d7d62;
 }

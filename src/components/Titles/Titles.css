@@ -1,13 +1,13 @@
 .h1Class {
     text-align: center;
     font-family: 'AR One Sans', sans-serif;
-    color: #ecdfef;
+    color: #f0f4f5;
     font-size: 800;
 }
 
 .miniP {
     text-align: center;
     font-family: 'Lato', sans-serif;
+    color: #f0f4f5;
     font-weight: 600;
-    color: #ecdfef;
 }

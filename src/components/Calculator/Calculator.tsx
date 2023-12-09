@@ -35,22 +35,6 @@ const Calculator = () => {
                     break
                 }
                 // Checking if the last character is an operation:
-                // if (operations2.includes(input[input.length - 1])) {
-                //     if (input[input.length - 1] === '-' && data === '-' ) {
-                //         break
-                //     } else if (input[input.length - 1] === data) {
-                //         break
-                //     } else if (operations2.includes(input[input.length - 2])) {
-                //         break
-                //     } else if (input[input.length - 1] !== '-' && data === '-') {
-                //         setInput(prev => prev.concat(data))
-                //         break
-                //     } else {
-                //         setInput(prev => prev.slice(0, -1).concat(data === '-' ? '' : data))
-                //         break
-                //     }
-                // }
-                // Checking if the last character is an operation:
                 if (operations2.includes(input[input.length - 1])) {
                     if (operations2.includes(input[input.length - 2]) && input[input.length - 1] === '-') {
                         const placeholder = input.slice(0, -2)

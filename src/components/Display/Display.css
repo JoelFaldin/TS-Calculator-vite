@@ -10,7 +10,7 @@
     color: #7a640e;
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
-    padding: 2px;
+    padding: 2px 5px 2px 2px;
     margin: 0;
     text-align: right;
 }
@@ -19,6 +19,7 @@
     color: #d4ad14;
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
+    padding: 2px 5px 2px 2px;
     margin-top: 0;
     text-align: right;
 }
